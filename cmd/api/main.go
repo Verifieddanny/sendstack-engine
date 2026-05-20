@@ -3,6 +3,8 @@ package main
 import (
 	"time"
 
+	_ "github.com/lib/pq"
+
 	"github.com/Verifieddanny/sendstack-engine/internal/db"
 	"github.com/Verifieddanny/sendstack-engine/internal/env"
 	"go.uber.org/zap"
@@ -16,7 +18,7 @@ func main() {
 		env:    env.GetEnvAsString("ENV", "development"),
 		apiUrl: env.GetEnvAsString("EXTERNAL_URL", "localhost:8080"),
 		db: dbConfig{
-			addr:         env.GetEnvAsString("DB_ADDR", ""),
+			addr:         env.GetEnvAsString("DB_ADDR", "postgres://local:password@localhost/test?sslmode=disable"),
 			maxOpenConns: env.GetEnvAsInt("DM_MAX_OPEN_CONNS", 30),
 			maxIdleConns: env.GetEnvAsInt("DM_MAX_IDLE_CONNS", 30),
 			maxIdleTime:  env.GetEnvAsString("DM_MAX_IDLE_TIME", "15m"),

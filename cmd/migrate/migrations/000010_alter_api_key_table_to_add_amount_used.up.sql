@@ -1,0 +1,2 @@
+ALTER TABLE api_key
+ADD COLUMN amount_used BIGINT NOT NULL DEFAULT 0;

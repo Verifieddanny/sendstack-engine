@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS usage (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    organization_id UUID NOT NULL REFERENCES organization(id) ON DELETE CASCADE,
+    plan_id UUID NOT NULL REFERENCES plan(id) ON DELETE CASCADE,
+    start_date TIMESTAMPTZ NOT NULL,
+    period DATE NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+)

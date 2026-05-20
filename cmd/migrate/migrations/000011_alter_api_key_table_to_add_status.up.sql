@@ -1,0 +1,2 @@
+ALTER TABLE api_key
+ADD COLUMN status VARCHAR(50) NOT NULL DEFAULT 'active';
